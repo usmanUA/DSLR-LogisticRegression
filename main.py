@@ -2,6 +2,7 @@ import numpy as np
 import argparse
 from DSLR.describe import describe
 from DSLR.histogram import histogram
+from DSLR.pairplot import pairplot
 from DSLR.scatterplot import scatterplot
 from DSLR.utils import loadDataset, getDataFeatures, getData
 
@@ -19,6 +20,10 @@ def main():
         histogram(features, data, "Marks", "Number of Students")
     elif args.action == 'scatterplot':
         scatterplot(features, data)
+    elif args.action == 'pairplot':
+        pairplot(features, data)
+    else:
+        print("Give a valid name for dataset and action")
 
 
 

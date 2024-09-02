@@ -54,30 +54,44 @@ def getParameters(features, data):
     X = X[~np.isnan(X)]
     return X, title, legend, indices
 
-def plotGraph(X, Y, legend, indices):
+def plotGraph(X, Y, legend, indices, ax=None):
     '''Plots the graph based on the given instruction in the parameters'''
 
     tot = len(legend)
     prev = 0
-    cmap = plt.cm.get_cmap('tab10')
+    colors = ['red', 'green', 'blue', 'yellow']
     for i in range(tot):
-        color = cmap(i % 10)
+        color = colors[i]
         if i == tot - 1:
             if Y is None:
                 h = X[indices[legend[i]]:]
-                plt.hist(h, color=color, alpha=0.5)
+                h = h[~np.isnan(h)]
+                if ax is None:
+                    plt.hist(h, color=color, alpha=0.5)
+                    continue
+                ax.hist(h, color=color, alpha=0.5)
             else:
                 x = X[indices[legend[i]]]
                 y = Y[indices[legend[i]]]
-                plt.scatter(x, y, color=color, alpha=0.5)
+                if ax is None:
+                    plt.scatter(x, y, color=color, alpha=0.5)
+                    continue
+                ax.scatter(x, y, color=color, alpha=0.5)
         else:
             if Y is None:
                 h = X[prev:indices[legend[i]]]
-                plt.hist(h, color=color, alpha=0.5)
+                h = h[~np.isnan(h)]
+                if ax is None:
+                    plt.hist(h, color=color, alpha=0.5)
+                    continue 
+                ax.hist(h, color=color, alpha=0.5)
             else:
                 x = X[prev:indices[legend[i]]]
                 y = Y[prev:indices[legend[i]]]
-                plt.scatter(x, y, color=color, alpha=0.5)
+                if ax is None:
+                    plt.scatter(x, y, color=color, alpha=0.5)
+                    continue
+                ax.scatter(x, y, color=color, alpha=0.5)
         prev = indices[legend[i]]   
 
 

@@ -6,7 +6,7 @@
 #    By: uahmed <uahmed@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/01 20:56:41 by uahmed            #+#    #+#              #
-#    Updated: 2024/09/01 20:59:43 by uahmed           ###   ########.fr        #
+#    Updated: 2024/09/02 11:57:51 by uahmed           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ def scatterplot(features, data):
     plotGraph(X, y, legend, indices)
     xlabel = data[0, xIdx]
     ylabel = data[0, yIdx]
-#    plt.scatter(X, y)# legend=legend)
     plt.xlabel(xlabel)
     plt.xlabel(ylabel)
     plt.legend(legend, loc='upper right', frameon=False)
