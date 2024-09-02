@@ -8,5 +8,3 @@ The DSLR (Data Science and Logistic Regression) project from 42 School is center
 - **Logistic Regression Implementation**: Implements logistic regression from scratch to classify data points effectively.
 - **Model Training and Testing**: Trains the logistic regression model using a dataset and evaluates its performance using metrics such as accuracy, precision, and recall.
 - **Data Visualization**: Visualizes data distribution and model predictions to gain insights into the classification process.
-
-## Getting Started
