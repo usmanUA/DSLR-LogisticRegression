@@ -14,22 +14,22 @@ The DSLR (Data Science and Logistic Regression) project from 42 School is center
 ### 1. Histogram
 This script plots a histogram for the feature with a homogeneous score.
 
-![Histogram Example](readmd_images/histogram.png)
+![Histogram Example](readme_images/histogram.png)
 
 ### 2. Scatter Plot
 This script generates a scatter plot to visualize the relationship between two features.
 
-![Scatter Plot Example]((readmd_images/scatterplot.png)
+![Scatter Plot Example]((readme_images/scatterplot.png)
 
 ### 3. Pair Plot
 This script creates a pair plot to show pairwise relationships between features.
 
-![Pair Plot Example]((readmd_images/pairplot.png)
+![Pair Plot Example]((readme_images/pairplot.png)
 
 ### 4. Describe Method Output
 This script runs a custom describe function to summarize statistics for each feature.
 
-![Describe Method Output]((readmd_images/describe_output.png)
+![Describe Method Output]((readme_images/describe_output.png)
 
 ## Scripts
 
