@@ -20,12 +20,14 @@ def scatterplot(features, data):
     xIdx = 6
     yIdx = 8
     _, _, legend, indices = getParameters(features, data)
+    data = data[data[:, 0].argsort()]
     X = np.array(data[:,xIdx], dtype=float)
     y = np.array(data[:,yIdx], dtype=float)
     plotGraph(X, y, legend, indices)
-    xlabel = data[0, xIdx]
-    ylabel = data[0, yIdx]
+    xlabel = features[xIdx]
+    ylabel = features[yIdx]
     plt.xlabel(xlabel)
-    plt.xlabel(ylabel)
+    plt.ylabel(ylabel)
     plt.legend(legend, loc='upper right', frameon=False)
+    plt.savefig('images/scatterplot.png')
     plt.show()

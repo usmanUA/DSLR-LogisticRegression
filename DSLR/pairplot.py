@@ -23,15 +23,16 @@ def pairplot(features, data):
         'size': 7
     }
     plt.rc('font', **font)
-    _, _, legend, indices = getParameters(features, data)
+    fig, _, legend, indices = getParameters(features, data)
     features = features[5:]
+    data = data[data[:, 0].argsort()]
     data = np.array(data[:, 5:], dtype=float)
 
     size = data.shape[1]
-    fig, axs = plt.subplots(nrows=size, ncols=size, figsize=(25.6, 14.4), tight_layout=False)
+    _, axs = plt.subplots(nrows=size, ncols=size, figsize=(25.6, 14.4), tight_layout=False)
     plt.subplots_adjust(wspace=0.15, hspace=0.15)
-    for row in range(size):
-        for col in range(size):
+    for row in range(0, size):
+        for col in range(0, size):
             ax = axs[row, col]
             X = data[:, col]
             if row == col:
@@ -44,13 +45,14 @@ def pairplot(features, data):
             if row == size - 1:
                 ax.set_xlabel(features[col].replace(' ', '\n'))
             if col == 0:
-                feature = features[col].replace(' ', '\n')
+                feature = features[row].replace(' ', '\n')
                 length = len(feature)
                 if length > 14 and '\n' not in feature:
                     feature = feature[:int(length/2)] + '\n' + feature[int(length/2):]
                 ax.set_ylabel(feature)
 
     plt.legend(legend, loc='center left', frameon=False, bbox_to_anchor=(1, 0.5))
-    plt.show()
+    plt.savefig('plot.png')
+#    plt.show()
 
 

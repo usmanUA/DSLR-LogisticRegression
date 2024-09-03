@@ -58,9 +58,8 @@ def plotGraph(X, Y, legend, indices, ax=None):
     '''Plots the graph based on the given instruction in the parameters'''
 
     tot = len(legend)
-    prev = 0
-    colors = ['red', 'green', 'blue', 'yellow']
-    for i in range(tot):
+    colors = ['red', 'yellow', 'blue', 'green']
+    for i in range(0, tot):
         color = colors[i]
         if i == tot - 1:
             if Y is None:
@@ -68,30 +67,27 @@ def plotGraph(X, Y, legend, indices, ax=None):
                 h = h[~np.isnan(h)]
                 if ax is None:
                     plt.hist(h, color=color, alpha=0.5)
-                    continue
-                ax.hist(h, color=color, alpha=0.5)
+                else:
+                    ax.hist(h, alpha=0.5)
             else:
-                x = X[indices[legend[i]]]
-                y = Y[indices[legend[i]]]
+                x = X[indices[legend[i]]:]
+                y = Y[indices[legend[i]]:]
                 if ax is None:
                     plt.scatter(x, y, color=color, alpha=0.5)
-                    continue
-                ax.scatter(x, y, color=color, alpha=0.5)
+                else: 
+                    ax.scatter(x, y, s=1, color=color, alpha=0.5)
         else:
             if Y is None:
-                h = X[prev:indices[legend[i]]]
+                h = X[indices[legend[i]]:indices[legend[i+1]]]
                 h = h[~np.isnan(h)]
                 if ax is None:
                     plt.hist(h, color=color, alpha=0.5)
-                    continue 
-                ax.hist(h, color=color, alpha=0.5)
+                else: 
+                    ax.hist(h, alpha=0.5)
             else:
-                x = X[prev:indices[legend[i]]]
-                y = Y[prev:indices[legend[i]]]
+                x = X[indices[legend[i]]:indices[legend[i+1]]]
+                y = Y[indices[legend[i]]:indices[legend[i+1]]]
                 if ax is None:
                     plt.scatter(x, y, color=color, alpha=0.5)
-                    continue
-                ax.scatter(x, y, color=color, alpha=0.5)
-        prev = indices[legend[i]]   
-
-
+                else:
+                    ax.scatter(x, y, s=1, color=color, alpha=0.5)
