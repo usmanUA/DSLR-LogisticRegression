@@ -91,3 +91,26 @@ def plotGraph(X, Y, legend, indices, ax=None):
                     plt.scatter(x, y, color=color, alpha=0.5)
                 else:
                     ax.scatter(x, y, s=1, color=color, alpha=0.5)
+
+
+def plotErrorCost(cost, error):
+    '''
+    Plots the cost and error of the Logistic Regression Model.
+    Parameters
+    ---------
+    cost: Cost History, shape (n_iter, )
+    error: Errors History , shape (n_iter, )
+    '''
+
+    _, ax = plt.subplots(nrows=1, ncols=2, figsize=(14, 6), constrained_layout=True)
+    ax[0].plot(range(1, len(cost)+1), cost, marker='o')
+    ax[0].set_xlabel('Epochs')
+    ax[0].set_ylabel('Cost Function')
+    ax[0].set_title('Logistic Regression - Learning Rate 0.1 / Regularizatioin term 10')
+
+    ax[1].plot(range(1, len(error)+1), error, marker='o')
+    ax[1].set_xlabel('Epochs')
+    ax[1].set_ylabel('Missclasifications')
+    ax[1].set_title('Logistic Regression - Learning Rate 0.1 / Regularizatioin term 10')
+
+    plt.show()

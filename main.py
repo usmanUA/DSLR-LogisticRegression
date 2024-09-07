@@ -5,6 +5,7 @@ from DSLR.histogram import histogram
 from DSLR.pairplot import pairplot
 from DSLR.scatterplot import scatterplot
 from DSLR.utils import loadDataset, getDataFeatures, getData
+from DSLR.train import trainModel
 
 def main():
     parser = argparse.ArgumentParser()
@@ -22,6 +23,8 @@ def main():
         scatterplot(features, data)
     elif args.action == 'pairplot':
         pairplot(features, data)
+    elif args.action == 'train':
+        trainModel(dataset[1:, 1:], features)
     else:
         print("Give a valid name for dataset and action")
 
