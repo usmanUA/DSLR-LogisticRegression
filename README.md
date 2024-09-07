@@ -40,8 +40,7 @@ This script runs a custom describe function to summarize statistics for each fea
 
 ## How to Run
 
-1. Place the dataset in the required format in the project directory.
-2. Run the respective Python script for the visualization or analysis you want to perform.
-
 ```bash
+git clone https://github.com/usmanUA/DSLR-LogisticRegression.git
+cd DSLR-LogisticRegression
 python3 main.py datasets/dataset_train.csv action=[histogram, scatterplot, pairplot]
