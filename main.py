@@ -1,5 +1,18 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    main.py                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: uahmed <uahmed@student.hive.fi>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/07 22:40:09 by uahmed            #+#    #+#              #
+#    Updated: 2024/09/07 22:41:08 by uahmed           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 import numpy as np
 import argparse
+from DSLR.predict import predict
 from DSLR.describe import describe
 from DSLR.histogram import histogram
 from DSLR.pairplot import pairplot
@@ -25,6 +38,8 @@ def main():
         pairplot(features, data)
     elif args.action == 'train':
         trainModel(dataset[1:, 1:], features)
+    elif args.action == 'predict':
+        predict(dataset[1:, 1:], features, './datasets/weights.csv')
     else:
         print("Give a valid name for dataset and action")
 

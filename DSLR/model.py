@@ -6,7 +6,7 @@
 #    By: uahmed <uahmed@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/05 08:32:42 by uahmed            #+#    #+#              #
-#    Updated: 2024/09/05 08:39:43 by uahmed           ###   ########.fr        #
+#    Updated: 2024/09/07 22:34:45 by uahmed           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,12 @@ from numpy._core.defchararray import index
 class   LogisticRegression(object):
     '''Trains the model based on the logistic regression algorithm'''
 
-    def __init__(self, eta=0.1, Lambda=0, maxIter=50, initial_weights=None, multi_class=None) -> None:
+    def __init__(self, eta=0.1, Lambda=0, maxIter=50, initial_weights=None, classes=None) -> None:
         self.eta = eta
         self.Lambda = Lambda
         self.maxIter = maxIter
         self._weights = initial_weights
-        self._K = multi_class
+        self._K = classes
         self._cost = []
         self._errors = []
 
@@ -110,5 +110,5 @@ class   LogisticRegression(object):
             for j in range(0, self._weights.shape[1]):
                 for i in range(0, self._weights.shape[0]):
                     f.write(f'{self._weights[i][j]},')
-                f.write(f'{sc._mean[j - 1] if j > 0 else ""},{sc._std[j - 1] if j > 0 else ""}\n')
+                f.write(f'{sc._mean[j - 1]},{sc._std[j - 1]}\n')
         return self

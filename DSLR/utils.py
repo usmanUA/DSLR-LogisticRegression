@@ -1,7 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    utils.py                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: uahmed <uahmed@student.hive.fi>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/07 22:37:31 by uahmed            #+#    #+#              #
+#    Updated: 2024/09/07 22:37:32 by uahmed           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
+
+importantFeatures = ['Astronomy', 'Herbology', 'Divination', 'Ancient Runes', 'Charms', 'Flying']
 
 def loadDataset(fileName):
     '''Loads the dataset file and writes entries to a numpy array'''
@@ -22,6 +37,28 @@ def loadDataset(fileName):
         except csv.Error as e:
             print(f"File: {fileName}, line number: {reader.line_num}, error: {e}")
     return  np.array(dataset, dtype=object)
+
+def modelData(dataset, features, action):
+    '''
+    Parses data selecting the features for the training/predictions.
+    Parameters
+    ----------
+    dataset: numpy ndarray of the given dataset
+
+    Returns
+    ------
+    X: selected features
+    y: feature to learn/predict
+    '''
+    df = pd.DataFrame(dataset, columns=features)
+    if action == 'train':
+        df = df.dropna(subset=importantFeatures)
+    else:
+        df = df.fillna(method='ffill')
+    y = df.values[:, 0]
+    dfX = df[importantFeatures]
+    X = dfX.to_numpy(dtype=float)
+    return X, y
 
 def getDataFeatures(dataset):
     ''' Returns the features names of the given dataset (column names)'''
