@@ -43,4 +43,5 @@ This script runs a custom describe function to summarize statistics for each fea
 ```bash
 git clone https://github.com/usmanUA/DSLR-LogisticRegression.git
 cd DSLR-LogisticRegression
-python3 main.py datasets/dataset_train.csv action=[histogram, scatterplot, pairplot]
+python3 main.py datasets/dataset_train.csv action=[histogram, scatterplot, pairplot, train]
+python3 main.py datasets/dataset_test.csv action=[predict]
